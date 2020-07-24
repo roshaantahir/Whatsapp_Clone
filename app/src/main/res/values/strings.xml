@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Whatsapp</string>
+    <string name="tab_text_1">Chat</string>
+    <string name="tab_text_2">Status</string>
+    <string name="tab_text_3">Calls</string>
+    <string name="action_settings">Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_text">Hello World</string>
+    <string name="todo">TODO</string>
+</resources>

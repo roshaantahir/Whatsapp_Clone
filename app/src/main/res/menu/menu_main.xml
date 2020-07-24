@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.myapplication.MainActivity">
+    <item
+        android:id="@+id/Search_icon"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="item_0"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_settings4"
+        android:orderInCategory="100"
+        android:title="New group"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings2"
+        android:orderInCategory="100"
+        android:title="New broadcast"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings3"
+        android:orderInCategory="100"
+        android:title="Whatsapp Web"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings6"
+        android:orderInCategory="100"
+        android:title="Starred messages"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"
+        />
+</menu>
