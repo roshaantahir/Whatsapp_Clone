@@ -1,5 +1,6 @@
 package com.example.whatsappc;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,19 +31,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.addOnPageChangeListener(onPageChangeListener);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
+        tabs.addOnTabSelectedListener(onTabSelectedListener);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,4 +59,63 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void animateFab(int position) {
+        FloatingActionButton fabchat = findViewById(R.id.fabchat);
+        FloatingActionButton fabstatus = findViewById(R.id.fabstatus);
+        FloatingActionButton fabcall = findViewById(R.id.fabcall);
+        switch (position) {
+            case 0:
+                fabchat.show();
+                fabstatus.hide();
+                fabcall.hide();
+                break;
+            case 1:
+                fabchat.hide();
+                fabstatus.show();
+                fabcall.hide();
+                break;
+            case 2:
+                fabchat.hide();
+                fabstatus.hide();
+                fabcall.show();
+                break;
+
+        }
+    }
+
+    TabLayout.OnTabSelectedListener onTabSelectedListener = new TabLayout.OnTabSelectedListener() {
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            animateFab(tab.getPosition());
+        }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+
+        }
+    };
+
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            animateFab(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
 }
