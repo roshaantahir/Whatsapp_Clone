@@ -64,20 +64,24 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fabchat = findViewById(R.id.fabchat);
         FloatingActionButton fabstatus = findViewById(R.id.fabstatus);
         FloatingActionButton fabcall = findViewById(R.id.fabcall);
+        FloatingActionButton fabedit = findViewById(R.id.fabedit);
         switch (position) {
             case 0:
                 fabchat.show();
                 fabstatus.hide();
+                fabedit.hide();
                 fabcall.hide();
                 break;
             case 1:
                 fabchat.hide();
                 fabstatus.show();
+                fabedit.show();
                 fabcall.hide();
                 break;
             case 2:
                 fabchat.hide();
                 fabstatus.hide();
+                fabedit.hide();
                 fabcall.show();
                 break;
 
