@@ -1,21 +1,22 @@
 package com.example.whatsappc;
 
-import android.app.ProgressDialog;
+
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
+
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+
 
 import com.example.whatsappc.ui.main.SectionsPagerAdapter;
 
@@ -37,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.addOnTabSelectedListener(onTabSelectedListener);
         tabs.setupWithViewPager(viewPager);
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -65,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fabstatus = findViewById(R.id.fabstatus);
         FloatingActionButton fabcall = findViewById(R.id.fabcall);
         FloatingActionButton fabedit = findViewById(R.id.fabedit);
+        Animation ScaleUp = AnimationUtils.loadAnimation(this,R.anim.scaleup);
+
         switch (position) {
             case 0:
                 fabchat.show();
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 fabstatus.show();
                 fabedit.show();
                 fabcall.hide();
+                fabedit.startAnimation(ScaleUp);
                 break;
             case 2:
                 fabchat.hide();
