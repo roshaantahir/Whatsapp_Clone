@@ -1,6 +1,9 @@
 package com.example.whatsappc;
 
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -9,6 +12,8 @@ import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.widget.Toolbar;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -37,19 +42,40 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.addOnTabSelectedListener(onTabSelectedListener);
         tabs.setupWithViewPager(viewPager);
+//  Notifications
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel  notificationChannel = new NotificationChannel("FirstNotification","FirstNotification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "FirstNotification")
+                .setContentTitle("Notification")
+                .setContentText("This is first notification")
+                .setAutoCancel(true)
+                .setSmallIcon(R.drawable.icon);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0,builder.build());
+
+
+
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
@@ -59,12 +85,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     private void animateFab(int position) {
         FloatingActionButton fabchat = findViewById(R.id.fabchat);
         FloatingActionButton fabstatus = findViewById(R.id.fabstatus);
         FloatingActionButton fabcall = findViewById(R.id.fabcall);
         FloatingActionButton fabedit = findViewById(R.id.fabedit);
-        Animation ScaleUp = AnimationUtils.loadAnimation(this,R.anim.scaleup);
+        Animation ScaleUp = AnimationUtils.loadAnimation(this, R.anim.scaleup);
 
         switch (position) {
             case 0:
@@ -123,5 +150,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
-
 }
