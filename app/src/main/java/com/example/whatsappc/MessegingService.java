@@ -18,6 +18,11 @@ public class MessegingService extends FirebaseMessagingService {
 
 
     public void ShowNotification (String title, String message){
+
+
+
+
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "FirstNotification")
                 .setContentTitle("Notification")
                 .setContentText("This is first notification")
