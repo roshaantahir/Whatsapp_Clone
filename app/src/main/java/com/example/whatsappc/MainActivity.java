@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
         tabs.addOnTabSelectedListener(onTabSelectedListener);
         tabs.setupWithViewPager(viewPager);
 //  Notifications
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel  notificationChannel = new NotificationChannel("FirstNotification","FirstNotification", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
@@ -57,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.icon);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(0,builder.build());
-
-
-
     }
 
     @Override

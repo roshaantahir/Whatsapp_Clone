@@ -48,7 +48,8 @@
         app:srcCompat="@drawable/ic_baseline_chat_24"
         tools:ignore="VectorDrawableCompat"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:visibility="gone"/>
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -67,6 +68,7 @@
             tools:ignore="VectorDrawableCompat"
             android:clickable="true"
             android:focusable="true"
+            android:visibility="gone"
             />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabedit"
@@ -79,7 +81,8 @@
             android:focusable="true"
             android:layout_marginBottom="75dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp" />
+            android:layout_marginStart="5dp"
+            android:visibility="gone"/>
     </FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
