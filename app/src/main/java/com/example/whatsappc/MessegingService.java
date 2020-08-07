@@ -24,8 +24,8 @@ public class MessegingService extends FirebaseMessagingService {
 
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "FirstNotification")
-                .setContentTitle("Notification")
-                .setContentText("This is first notification")
+                .setContentTitle(title)
+                .setContentText(message)
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.icon);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
