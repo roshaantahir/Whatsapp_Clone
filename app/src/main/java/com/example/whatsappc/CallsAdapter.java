@@ -38,7 +38,6 @@ public class CallsAdapter extends RecyclerView.Adapter<CallsAdapter.CallViewHold
     }
     @Override
     public void onBindViewHolder(CallViewHolder holder, int position) {
-
         String title = Title[position];
         int callstatus = callStatus[position];
         String txtcalltime = txtCallTime[position];

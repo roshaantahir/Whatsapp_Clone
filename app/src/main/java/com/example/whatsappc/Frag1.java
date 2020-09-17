@@ -7,8 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.io.IOException;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +28,10 @@ public class Frag1 extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public EditText tokenText;
+    public   Button tokenButton;
+
+
 
     public Frag1() {
         // Required empty public constructor
@@ -58,13 +69,24 @@ public class Frag1 extends Fragment {
         RecyclerView chatRecyclerView = view.findViewById(R.id.Chat_list);
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ChatAdapter chatAdapter = new ChatAdapter(Name,Status,Time,Photo);
-        chatRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         chatRecyclerView.setAdapter(chatAdapter);
+        tokenButton = view.findViewById(R.id.get_Token);
+        tokenText = view.findViewById(R.id.token_text);
+        tokenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    tokenText.setText(FirebaseInstanceId.getInstance().getToken());
+
+            }
+        });
+
         return view;
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 }
 
